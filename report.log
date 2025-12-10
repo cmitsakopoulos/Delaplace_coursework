@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.17)  10 DEC 2025 11:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.17)  10 DEC 2025 14:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -711,11 +711,16 @@ Overfull \hbox (7.30768pt too wide) in paragraph at lines 50--51
  [][] 
  []
 
-<title_page.png, id=11, 823.075pt x 496.85625pt>
+<title_page.png, id=11, 809.0225pt x 640.3925pt>
 File: title_page.png Graphic file (type png)
 <use title_page.png>
 Package pdftex.def Info: title_page.png  used on input line 60.
-(pdftex.def)             Requested size: 341.43306pt x 206.1081pt.
+(pdftex.def)             Requested size: 341.43306pt x 270.2724pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 61.
+See the caption package documentation for explanation.
+
 
 
 [1
@@ -730,7 +735,7 @@ Package pdftex.def Info: title_page.png  used on input line 60.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.97 \newpage
+l.96 \newpage
               [1]
 
 [2] (./report.aux)
@@ -745,18 +750,18 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20670 strings out of 473207
- 360427 string characters out of 5716282
- 983248 words of memory out of 5000000
- 43697 multiletter control sequences out of 15000+600000
- 565309 words of font info for 45 fonts, out of 8000000 for 9000
+ 20679 strings out of 473207
+ 360567 string characters out of 5716282
+ 984256 words of memory out of 5000000
+ 43704 multiletter control sequences out of 15000+600000
+ 565993 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,81p,2027b,1822s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on report.pdf (3 pages, 503405 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on report.pdf (3 pages, 688617 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
- 5 named destinations out of 1000 (max. 500000)
+ 76 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
+ 6 named destinations out of 1000 (max. 500000)
  24 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,6 +1,6 @@
 # Fdb version 4
-["bibtex report"] 0 "report.aux" "report.bbl" "report" 0 0
-  "./report-blx.bib" 1765363714.75028 342 20d1170ef6c1d70c658d70e011e08dba ""
+["bibtex report"] 0 "report.aux" "report.bbl" "report" 1765373739.88376 0
+  "./report-blx.bib" 1765373739.51688 342 20d1170ef6c1d70c658d70e011e08dba ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1711143581 65510 b1f696b0241395385f422f67543c37fd ""
   "references.bib" 0 -1 0 ""
   "report.aux" 0 -1 0 "pdflatex"
@@ -8,8 +8,8 @@
   "report.bbl"
   "report.blg"
   (rewritten before read)
-["pdflatex"] 1765363717.15198 "/Users/chrismitsacopoulos/Desktop/Delaplace_coursework/report.tex" "report.pdf" "report" 1765363719.03827 0
-  "/Users/chrismitsacopoulos/Desktop/Delaplace_coursework/report.tex" 1765363709.94939 2913 06c312ce722cbab5cf805700b7c2d419 ""
+["pdflatex"] 1765373737.80493 "/Users/chrismitsacopoulos/Desktop/Delaplace_coursework/report.tex" "report.pdf" "report" 1765373739.88393 0
+  "/Users/chrismitsacopoulos/Desktop/Delaplace_coursework/report.tex" 1765373736.87142 3047 da72a1d0a2b38bb82920deea715ef965 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
@@ -20,6 +20,7 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm" 1136768653 3584 3169d30142b88a27d4ab0e3468e963a2 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm1728.tfm" 1136768653 3584 3c76ccb63eda935a68ba65ba9da29f1a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm2488.tfm" 1136768653 3584 406ad7b70d9a41f7833f92b6313150c8 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecti1200.tfm" 1136768653 3072 8b5a64dc91775463bc95e2d818524028 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb" 1215737283 140176 d4962f948b4cc0adf4d3dde77a128c95 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb" 1215737283 135942 859a90cad7494a1e79c94baf546d7de5 ""
@@ -28,6 +29,7 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb" 1215737283 136101 f533469f523533d38317ab5729d00c8a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb" 1215737283 131078 d96015a2fa5c350129e933ca070b2484 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb" 1215737283 131438 3aa300b3e40e5c8ba7b4e5c6cebc5dd6 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb" 1215737283 198221 ca5aa71411090ef358a6cc78b7458365 ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/babel-english/english.ldf" 1496785618 7008 9ff5fdcc865b01beca2b0fe4a46231d4 ""
@@ -118,13 +120,13 @@
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "logo_blue.png" 1764158467.25196 110286 f2b88f7246b5cdc1ad444c12c03678af ""
   "logo_purple.png" 1764158467.25272 106823 55414d6e27a1112c21e51eaa93322b9b ""
-  "report.aux" 1765363718.71194 581 1b4719907207af53e328b5c7230d253f "pdflatex"
+  "report.aux" 1765373739.51472 813 eb89963aba339625de4d32f2056d3370 "pdflatex"
   "report.bbl" 0 -1 0 "bibtex report"
-  "report.out" 1765363718.71299 103 9814c2d956916adb9290eca4e25c967a "pdflatex"
-  "report.run.xml" 1765363718.71451 2540 d4aedd7547f50898015f1f22f5ead372 "pdflatex"
-  "report.tex" 1765363709.94939 2913 06c312ce722cbab5cf805700b7c2d419 ""
-  "report.toc" 1765363718.71456 98 24aa10f289b1dbfca270e9597e3a49ec "pdflatex"
-  "title_page.png" 1764677438.78564 270909 86f4145f1208fa19fee7bc05ccdb59b5 ""
+  "report.out" 1765373739.5159 103 9814c2d956916adb9290eca4e25c967a "pdflatex"
+  "report.run.xml" 1765373739.51747 2540 d4aedd7547f50898015f1f22f5ead372 "pdflatex"
+  "report.tex" 1765373736.87142 3047 da72a1d0a2b38bb82920deea715ef965 ""
+  "report.toc" 1765373739.51752 98 24aa10f289b1dbfca270e9597e3a49ec "pdflatex"
+  "title_page.png" 1765373252.45 595395 79f5c14d704f8a567349f6206cd7c3e4 ""
   (generated)
   "report-blx.bib"
   "report.aux"
