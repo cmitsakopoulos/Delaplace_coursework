@@ -110,6 +110,15 @@ In order to benchmark the metaheuristic approaches in this report, an Erdős-Ré
 
 \bigskip
 
-As you might observe in the Jupyter Notebook, the solution of each algorithm is encoded as a permutation vector $S = [v_1, v_2, v_3, ..., v_n]$. Expectedly, the constraint here is that each $v_i$ (where $i\in n$), must be present only once in $S$ -- such that it represents a Hamiltonian Path ($G$).
+As you might observe in the Jupyter Notebook, the solution of each algorithm is encoded as a permutation vector $S = [v_1, v_2, v_3, ..., v_n]$. Expectedly, the constraint here is that each $v_i$ (where $i\in n$), must be present only once in $S$ -- such that it represents a Hamiltonian Path ($G$). This was believed to be an adequate approach, to encoding the best solution of each algorithm.
+
+\section{Metaheuristics: Mode of Action and Objective Functions}
+
+The objective function of Simulated Annealing (SA) seeks to minimise the cost of "broken edges" or gaps while searching for $G$ (where $G$ = zero broken edges). 
+
+
+In the Jupyter Notebook, the "quality" of a Hamiltonian path $G$ is based on its adjacency continuity. The fitness landscape for
+this problem is discrete and highly "rugged," meaning there are many local optima (paths with only
+1 or 2 breaks) that are difficult to escape
  
 \end{document}
