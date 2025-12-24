@@ -1,3 +1,9 @@
 \babel@toc {english}{}\relax 
-\contentsline {section}{\numberline {1}Abstract}{2}{section.1}%
-\contentsline {section}{\numberline {2}Test Environment: Erdős-Rényi Random Graph}{2}{section.2}%
+\contentsline {section}{\numberline {1}Formal Definition and Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Test Environment -- Random Generation of the Problem: Erdős-Rényi Random Graph}{2}{section.2}%
+\contentsline {section}{\numberline {3}Metaheuristic Algorithms: Mode of Action and their Implementation}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Objective Function}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Simulated Annealing (SA)}{3}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Tabu Search (TS)}{4}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Genetic Algorithm (GA)}{4}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Comparative Analysis: Neighbourhood Operators}{4}{subsection.3.5}%

@@ -137,7 +137,7 @@ In the context of bioinformatics, specifically \textit{de novo} genome assembly,
 
 Find all relevant results / as well as reproduce the experiment using the \texttt{main.py} at the following address: \url{https://github.com/cmitsakopoulos/Delaplace_coursework}. The Python script automates all tests demonstrated in this report and moreover, accepts user arguments through the command line interface; intended for tweaking parameters regarding base graph generation.
 
-\begin{lstlisting}[language=Python, caption=Usage scenario where the number of nodes for the problem graph are set to 50, with the probability of any two nodes having a connecting edge is 0.15. (This was ran in a Python environment -- ensure you install the dependencies listed in the annex.)]
+\begin{lstlisting}[language=Python, caption=\textit{Usage scenario where the number of nodes for the problem graph are set to 50, with the probability of any two nodes having a connecting edge is 0.15. (This was ran in a Python environment -- ensure you install the dependencies listed in the annex.)}]
 (project) chrismitsacopoulos@192 Delaplace_coursework % python3 main.py --nodes 50 --prob 0.15
 \end{lstlisting}
 
@@ -151,7 +151,7 @@ To benchmark the metaheuristic algorithms, an Erdős-Rényi (ER) $G(n,p)$ model 
 
 A larger parameter $p$ will by effect increase the likelihood of finding a Hamiltonian Path, given that the probability of any two nodes having a connecting edge is larger. This was evident when first trying out the \texttt{main.py} Python script, where preliminary tests with a  $p$ of $\approx0.3$ and $n=50$ showed that a Hamiltonian Path was indeed mathematically possible to find; so much so that all algorithms would converge to a zero cost solution (no broken edges).
 
-\begin{lstlisting}[language=Python, caption=Small snippet of code in which NetworkX in Python can generate an ER graph of chosen parameters, identify that the default options are intended for a "challenging" benchmark for the algorithms. Hardcoding the seed was not a deliberate analytical choice, just to ensure reproducibility of the graph itself -- the algorithms are stochastic too...)
+\begin{lstlisting}[language=Python, caption=\textit{Small snippet of code in which NetworkX in Python can generate an ER graph of chosen parameters, identify that the default options are intended for a "challenging" benchmark for the algorithms. Hardcoding the seed was not a deliberate analytical choice, just to ensure reproducibility of the graph itself -- the algorithms are stochastic too...}]
 # n default = 50, p default = 0.1, seed hardcoded to 42
 g_exp = nx.erdos_renyi_graph(n=num_nodes, p=prob, seed=SEED)
 \end{lstlisting}
@@ -160,10 +160,87 @@ g_exp = nx.erdos_renyi_graph(n=num_nodes, p=prob, seed=SEED)
 
 To ensure significance of the results, each metaheuristic algorithm was executed for $N=30$ runs. Relying on the Central Limit Theorem, the sampling distribution of the mean approximates a normal distribution as $N \geq 30$, even if the underlying population distribution is non-Gaussian. While increasing $N$ reduces the Standard Error of the Mean (SEM), the precision improves only with the square root of $N$ (i.e., $\text{SEM} = \sigma / \sqrt{N}$). 
 
-\section{Metaheuristics: Mode of Action and Objective Functions}
+\section{Metaheuristic Algorithms: Mode of Action and their Implementation}
 
-The objective function of Simulated Annealing (SA) seeks to minimise the cost of "broken edges" or gaps while searching for $G$ (where $G$ = zero broken edges). 
+\subsection{Objective Function}
+All algorithms used aim to identify a permutation $S$ of vertices that minimises the number of broken edges in the path. For a graph $G=(V,E)$ and a candidate path $S = [v_1, v_2, \dots, v_n]$, the cost function $C(S)$ is defined as:
 
-To ensure significance of the results, each metaheuristic algorithm was executed for $N=30$ runs. Relying on the Central Limit Theorem, the sampling distribution of the mean approximates a normal distribution as $N \geq 30$, even if the underlying population distribution is non-Gaussian. While increasing $N$ reduces the Standard Error of the Mean (SEM), the precision improves only with the square root of $N$ (i.e., $\text{SEM} = \sigma / \sqrt{N}$). 
+\begin{equation}
+    C(S) = (n-1) - \sum_{i=1}^{n-1} \mathbb{I}((v_i, v_{i+1}) \in E)
+\end{equation}
+Where $\mathbb{I}$ is an indicator function that equals 1 if the edge exists and 0 otherwise. A global optimum is reached when $C(S) = 0$ -- a Hamiltonian Path.
+
+\subsection{Simulated Annealing (SA)}
+
+Simulated Annealing explores solutions by accepting both better or even, worse solutions, based on a probability that decreases over time (referred to as parameter $T$). This logic prevents the algorithm from arriving at a final solution, before it has found the true solution inside the solution space. The probability $P$ -- of accepting --  a new solution $S'$ with cost difference $\Delta C = C(S') - C(S)$ is governed by the Metropolis criterion (see also the Python implementation below):
+
+\begin{equation}
+    P(\text{accept}) = 
+    \begin{cases} 
+    1 & \text{if } \Delta C < 0 \\
+    e^{-\frac{\Delta C}{T}} & \text{if } \Delta C \geq 0 
+    \end{cases}
+\end{equation}
+
+\begin{lstlisting}[language=Python, caption=\textit{Metropolis Criterion: As the loop progresses, the temperature $T$ decays geometrically ($T_{k+1} = 0.985 \cdot T_k$), gradually turning the search into a simple greedy descent (hill climbing)}]
+# From main.py: Calculate cost difference
+delta = neighbor_cost - current_cost
+
+# Accept if better (delta < 0) OR with probability exp(-delta/T)
+if delta < 0 or random.random() < exp(-delta / temp):
+    current = neighbor
+    current_cost = neighbor_cost
+\end{lstlisting}
+
+\subsection{Tabu Search (TS)}
+Tabu Search differs from SA by using a deterministic, memory-based approach. It explores the immediate neighbourhood of the current solution and moves to the best available neighbour, even if that neighbour is worse than the current solution.
+
+To prevent cycling (revisiting the same solutions endlessly), the algorithm maintains a \textit{Tabu List}—a short-term memory queue that forbids recently visited solutions for a specific duration (tenure).
+
+\begin{lstlisting}[language=Python, caption=Tabu Search Memory Logic]
+# From main.py: Moving to the best candidate not in the Tabu list
+if cand not in tabu_list:
+    current = cand
+    found_move = True
+    
+# Update memory
+tabu_list.append(current)
+if len(tabu_list) > tenure:
+    tabu_list.pop(0) # Remove oldest entry
+\end{lstlisting}
+
+\subsection{Genetic Algorithm (GA)}
+
+The Genetic Algorithm mimics natural selection. Unlike SA and TS, which improve a single solution, GA evolves a population of solutions. The core operator for permutation problems is \textit{Ordered Crossover} (OX1), which is necessary because standard single-point crossover would result in invalid paths (duplicate or missing nodes).
+
+The implementation uses OX1 to preserve the relative ordering of a sub-segment from one parent while filling the remaining slots with genes from the second parent.
+
+\begin{lstlisting}[language=Python, caption=Ordered Crossover (OX1) Implementation]
+# From main.py: Preserves sub-segment from parent 1
+child[start:end] = p1[start:end]
+
+# Fills remaining slots from parent 2, skipping duplicates
+for i in range(size):
+    if child[i] is None:
+        while p2[current_p2_idx] in child:
+            current_p2_idx += 1
+        child[i] = p2[current_p2_idx]
+\end{lstlisting}
+
+\subsection{Comparative Analysis: Neighbourhood Operators}
+A critical finding in the experimental setup was the impact of the mutation operator. The standard \texttt{swap} operator (exchanging two indices) disrupts the adjacency of the path significantly.
+
+In contrast, the \texttt{inversion} (2-Opt) operator reverses a segment of the path. This is mathematically superior for path problems because it preserves the internal adjacency of the reversed segment, only breaking the two edges at the endpoints of the segment. The code allows for switching between these operators to demonstrate this efficiency gap.
+
+\begin{equation}
+    \text{Swap}(S) \rightarrow \text{High disruption of edges}
+\end{equation}
+\begin{equation}
+    \text{Inversion}(S) \rightarrow \text{Minimal disruption (2-Opt)}
+\end{equation}
+
+This distinction is implemented via the `op_inversion` function in `main.py`  and is the primary driver for convergence in denser graphs.
+
+
 
 \end{document}
