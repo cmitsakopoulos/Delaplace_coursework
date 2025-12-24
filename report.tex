@@ -18,6 +18,35 @@
 % --- ADD: Allow underscores in normal text to avoid "Missing $ inserted" errors ---
 \usepackage{underscore}
 
+% --- Add these to your Preamble ---
+\usepackage{xcolor}
+\usepackage{listings}
+
+% Define a custom style for Python code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{purple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -96,29 +125,45 @@
 \newpage
 
 % --- Introduction ---
-\section{Abstract}
+\section{Formal Definition and Introduction}
 
-Given a graph with a set of vertices, $V$, a path, $G$, is described as a Hamiltonian path, given that it passes through each vertex of a graph exactly once. Importantly, there is no efficient polynomial-time algorithm known to solve it for general graphs. As $V$ increases, the computational time nedded to solve it by brute force grows factorially. As such, this necessitates the use of metaheuristics for larger instances (=graphs). Importantly, the Hamiltonian path is critical for de novo genome assembly, as arranging reads in an acyclic graph -- one seeks to maximise the reads used within the a single path, to create a contiguous sequence. In this report a variety of metaheuristic approaches are tested against each other and a smaller implementation of a brute force search. The approaches include: \textit{Simulated Annealing}, \textit{Tabu Search} and a \textit{Genetic Algorithm} (appropriated from class), compared against a simple brute force approach for demonstration purposes.
+To start with, the Hamiltonian Path problem asks if a graph $G=(V, E)$ contains a path that visits every vertex / node $v \in V$ exactly once. 
 
-\bigskip
+Given that the Hamiltonian Path problem is NP-Complete, as the number of vertices of the vertex set $n = |V|$ increases, the computational complexity required to solve the problem via brute force grows factorially ($O(n!)$). Consequently, exact algorithms become computationally intractable for large $n$, necessitating the use of metaheuristics -- like the ones tested in this report. For this exact reason no evaluation of a brute force approach has been considered in the experiments of this report, as the computational and time complexity required is too high to practically implement. This report evaluates three metaheuristic approaches: \textit{Simulated Annealing}, \textit{Tabu Search}, and a \textit{Genetic Algorithm}.
 
-Find all relevant results / as well as reproduce the experiment using the \texttt{christos_mitsakopoulos.ipynb} -- Jupyter Notebook, clone the repository at the following address for additional proof of work: \url{https://github.com/cmitsakopoulos/Delaplace_coursework}
-
-\section{Test Environment: Erdős-Rényi Random Graph}
-
-In order to benchmark the metaheuristic approaches in this report, an Erdős-Rényi (ER) $G(n,p)$ model was used. Where: $n$ is the number of vertices / nodes of the ER graph, while $p$ the probability an edge exists between two distinct nodes in that graph. Increasing the parameter $p$ influences the edge-density of this unstructured graph type, making it less challenging to identify a Hamiltonian path. This phenomenon became apparent when testing the configuration within my \texttt{christos_mitsakopoulos.ipynb} testing environment; for instance, a $p$ of $\approx0.3$ saw all metaheuristic approaches converge to a perfect "score" -- zero broken edges (=nodes uncovered). An expected outcome given the abundance of edges between any node in the graph, and by effect multiple Hamiltonian paths for the metaheuristic algorithms to identify.
+In the context of bioinformatics, specifically \textit{de novo} genome assembly, this problem is interesting. Arranging DNA reads in an acyclic graph can be modelled as finding a Hamiltonian path that maximises read overlap to create a contiguous sequence. Since this is a bioinformatics course, a genetic algorithm appropriated from the course material (much like all other algorithms implemented) was tested to match the theme of genome assembly heuristics.
 
 \bigskip
 
-As you might observe in the Jupyter Notebook, the solution of each algorithm is encoded as a permutation vector $S = [v_1, v_2, v_3, ..., v_n]$. Expectedly, the constraint here is that each $v_i$ (where $i\in n$), must be present only once in $S$ -- such that it represents a Hamiltonian Path ($G$). This was believed to be an adequate approach, to encoding the best solution of each algorithm.
+Find all relevant results / as well as reproduce the experiment using the \texttt{main.py} at the following address: \url{https://github.com/cmitsakopoulos/Delaplace_coursework}. The Python script automates all tests demonstrated in this report and moreover, accepts user arguments through the command line interface; intended for tweaking parameters regarding base graph generation.
+
+\begin{lstlisting}[language=Python, caption=Usage scenario where the number of nodes for the problem graph are set to 50, with the probability of any two nodes having a connecting edge is 0.15. (This was ran in a Python environment -- ensure you install the dependencies listed in the annex.)]
+(project) chrismitsacopoulos@192 Delaplace_coursework % python3 main.py --nodes 50 --prob 0.15
+\end{lstlisting}
+
+\section{Test Environment -- Random Generation of the Problem: Erdős-Rényi Random Graph}
+
+To benchmark the metaheuristic algorithms, an Erdős-Rényi (ER) $G(n,p)$ model was used. In which: 
+\begin{itemize}
+    \item $n$: The number of vertices in the graph.
+    \item $p$: The probability that an edge exists between any two distinct vertices.
+\end{itemize}
+
+A larger parameter $p$ will by effect increase the likelihood of finding a Hamiltonian Path, given that the probability of any two nodes having a connecting edge is larger. This was evident when first trying out the \texttt{main.py} Python script, where preliminary tests with a  $p$ of $\approx0.3$ and $n=50$ showed that a Hamiltonian Path was indeed mathematically possible to find; so much so that all algorithms would converge to a zero cost solution (no broken edges).
+
+\begin{lstlisting}[language=Python, caption=Small snippet of code in which NetworkX in Python can generate an ER graph of chosen parameters, identify that the default options are intended for a "challenging" benchmark for the algorithms. Hardcoding the seed was not a deliberate analytical choice, just to ensure reproducibility of the graph itself -- the algorithms are stochastic too...)
+# n default = 50, p default = 0.1, seed hardcoded to 42
+g_exp = nx.erdos_renyi_graph(n=num_nodes, p=prob, seed=SEED)
+\end{lstlisting}
+
+\bigskip
+
+To ensure significance of the results, each metaheuristic algorithm was executed for $N=30$ runs. Relying on the Central Limit Theorem, the sampling distribution of the mean approximates a normal distribution as $N \geq 30$, even if the underlying population distribution is non-Gaussian. While increasing $N$ reduces the Standard Error of the Mean (SEM), the precision improves only with the square root of $N$ (i.e., $\text{SEM} = \sigma / \sqrt{N}$). 
 
 \section{Metaheuristics: Mode of Action and Objective Functions}
 
 The objective function of Simulated Annealing (SA) seeks to minimise the cost of "broken edges" or gaps while searching for $G$ (where $G$ = zero broken edges). 
 
+To ensure significance of the results, each metaheuristic algorithm was executed for $N=30$ runs. Relying on the Central Limit Theorem, the sampling distribution of the mean approximates a normal distribution as $N \geq 30$, even if the underlying population distribution is non-Gaussian. While increasing $N$ reduces the Standard Error of the Mean (SEM), the precision improves only with the square root of $N$ (i.e., $\text{SEM} = \sigma / \sqrt{N}$). 
 
-In the Jupyter Notebook, the "quality" of a Hamiltonian path $G$ is based on its adjacency continuity. The fitness landscape for
-this problem is discrete and highly "rugged," meaning there are many local optima (paths with only
-1 or 2 breaks) that are difficult to escape
- 
 \end{document}
