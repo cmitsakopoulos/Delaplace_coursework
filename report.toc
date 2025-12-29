@@ -2,13 +2,12 @@
 \contentsline {section}{\numberline {1}Formal Definition and Introduction}{2}{section.1}%
 \contentsline {section}{\numberline {2}Random Generation of the Problem: Erdős-Rényi Random Graph}{2}{section.2}%
 \contentsline {section}{\numberline {3}Test Environment: Experimental Choices and Reasoning}{3}{section.3}%
-\contentsline {section}{\numberline {4}Metaheuristic Algorithms: Mode of Action and their Implementation}{3}{section.4}%
+\contentsline {section}{\numberline {4}Metaheuristic Algorithms: Mode of Action and Code Snippets}{3}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Objective Function}{3}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Simulated Annealing (SA)}{4}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Tabu Search (TS)}{4}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Genetic Algorithm (GA)}{5}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Comparative Analysis: Neighbourhood Operators in GA}{5}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Comparing the Metaheuristic Algorithms}{5}{section.5}%
+\contentsline {section}{\numberline {5}Experiment: Comparing the Metaheuristic Algorithms}{5}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Batch Testing}{5}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Phase Transition}{6}{subsection.5.2}%
 \contentsline {section}{\numberline {6}GA: Comparing Swap Operator to 2-Opt}{7}{section.6}%

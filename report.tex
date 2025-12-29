@@ -87,7 +87,7 @@
     \begin{minipage}[t]{1\textwidth}
         \centering
         \includegraphics[width=12cm]{title_page.png}
-        \captionof{figure}{\textit{Visualised with Pyvis, depicts the correct Hamiltonian path through the artificially generated, 50 node graph.}}
+        \captionof{figure}{\textit{Visualised with Pyvis, depicts the incomplete solution -- Hamiltonian path, which the GA found using the 2-OPT (inversion) operator in the Erdős-Rényi random graph. Broken edges are depicted in red.}}
     \end{minipage}
     \vspace{0.3cm}
 
@@ -179,7 +179,7 @@ While $p < p_{\text{limit}}$, the probability of a Hamiltonian path existing app
 
 Another important consideration, was to examine the impact of switching from a \text{"Swap"} operator to an \textbf{"Inversion" (2-OPT) operator} between testing cases. This was not only tested in the case of GA, to demonstrate how it can be a positive addition on an already accurate algorithm. However, it was also tested in the case of SA and GA to show that the impact of this change is not algorithm-specific; this should become evident when looking at the \textbf{"Phase Transition"} experiment of this report, where the 2-OPT operator was used instead of the Swap operator.
 
-\section{Metaheuristic Algorithms: Mode of Action and their Implementation}
+\section{Metaheuristic Algorithms: Mode of Action and Code Snippets}
 
 \subsection{Objective Function}
 All algorithms used aim to identify a permutation $S$ of vertices that minimises the number of broken edges in the path. For a graph $G=(V,E)$ and a candidate path $S = [v_1, v_2, \dots, v_n]$, the cost function $C(S)$ is defined as:
@@ -247,8 +247,7 @@ for i in range(size):
             current_p2_idx += 1
         child[i] = p2[current_p2_idx]
 \end{lstlisting}
-
-\subsection{Comparative Analysis: Neighbourhood Operators in GA}
+\bigskip
 Using the standard \texttt{swap} operator (exchanging two indices) disrupts the adjacency of the path significantly. In comparison, the \texttt{inversion} (2-Opt) operator reverses a segment of the path. This is mathematically better for path search problems because it preserves the internal adjacency of the reversed segment, only breaking the two edges at the endpoints of the segment. This distinction is implemented via the `op_inversion` function in `main.py` and is the primary driver for convergence in denser graphs. A graph is produced at the end during testing to demonstrate the differences of both applications. 
 
 \begin{equation}

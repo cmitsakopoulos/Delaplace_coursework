@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.17)  29 DEC 2025 18:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.17)  29 DEC 2025 18:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -813,7 +813,7 @@ Package biblatex Info: ... file 'report.bbl' found.
 Package biblatex Info: Reference section=0 on input line 65.
 Package biblatex Info: Reference segment=0 on input line 65.
 \c@lstlisting=\count453
-<logo_blue.png, id=60, 1993.94937pt x 1004.25188pt>
+<logo_blue.png, id=56, 1993.94937pt x 1004.25188pt>
 File: logo_blue.png Graphic file (type png)
 <use logo_blue.png>
 Package pdftex.def Info: logo_blue.png  used on input line 74.
@@ -823,7 +823,7 @@ Overfull \hbox (95.7065pt too wide) in paragraph at lines 74--75
  [][] 
  []
 
-<logo_purple.png, id=62, 3011.25pt x 1060.96375pt>
+<logo_purple.png, id=58, 3011.25pt x 1060.96375pt>
 File: logo_purple.png Graphic file (type png)
 <use logo_purple.png>
 Package pdftex.def Info: logo_purple.png  used on input line 79.
@@ -833,7 +833,7 @@ Overfull \hbox (7.30768pt too wide) in paragraph at lines 79--80
  [][] 
  []
 
-<title_page.png, id=63, 629.35126pt x 572.1375pt>
+<title_page.png, id=59, 629.35126pt x 572.1375pt>
 File: title_page.png Graphic file (type png)
 <use title_page.png>
 Package pdftex.def Info: title_page.png  used on input line 89.
@@ -891,47 +891,52 @@ l.169 ... all metaheuristics tested, the Komlós &
 [3]
 
 [4]
+Overfull \hbox (12.93663pt too wide) in paragraph at lines 260--260
+[]\T1/cmr/bx/n/17.28 Experiment: Com-par-ing the Meta-heuris-tic Al-go-rithms 
+ []
+
+
 
 [5]
 ! Misplaced alignment tab character &.
-l.273 ...or an ER graph with $n=50$, the Komlós &
+l.272 ...or an ER graph with $n=50$, the Komlós &
                                                    Szemerédi limit is $p=0....
 
 ? 
-<experiment_1_batch_results.png, id=176, 1001.6622pt x 423.2613pt>
+<experiment_1_batch_results.png, id=171, 1001.6622pt x 423.2613pt>
 File: experiment_1_batch_results.png Graphic file (type png)
 <use experiment_1_batch_results.png>
-Package pdftex.def Info: experiment_1_batch_results.png  used on input line 277
+Package pdftex.def Info: experiment_1_batch_results.png  used on input line 276
 .
 (pdftex.def)             Requested size: 455.24411pt x 192.3646pt.
 ! Misplaced alignment tab character &.
 <argument> In the box &
                         whisker plots depicted, "Solution Quality" (Y-axis: ...
-l.278 ... positive outcomes in problem solving.} }
+l.277 ... positive outcomes in problem solving.} }
                                                   
 ? 
 ! Misplaced alignment tab character &.
 <argument> In the box &
                         whisker plots depicted, "Solution Quality" (Y-axis: ...
-l.278 ... positive outcomes in problem solving.} }
+l.277 ... positive outcomes in problem solving.} }
                                                   
 ? 
-<experiment_3_phase_transition.png, id=180, 615.4995pt x 396.0396pt>
+<experiment_3_phase_transition.png, id=175, 615.4995pt x 396.0396pt>
 File: experiment_3_phase_transition.png Graphic file (type png)
 <use experiment_3_phase_transition.png>
 Package pdftex.def Info: experiment_3_phase_transition.png  used on input line 
-288.
+287.
 (pdftex.def)             Requested size: 455.24411pt x 292.9378pt.
 ! Misplaced alignment tab character &.
 <argument> ...t problem graph, given the Komlós &
                                                    Szemerédi formula. Obser...
-l.289 ...hms is congruent with previous results.}}
+l.288 ...hms is congruent with previous results.}}
                                                   
 ? 
 ! Misplaced alignment tab character &.
 <argument> ...t problem graph, given the Komlós &
                                                    Szemerédi formula. Obser...
-l.289 ...hms is congruent with previous results.}}
+l.288 ...hms is congruent with previous results.}}
                                                   
 ? 
 
@@ -939,11 +944,11 @@ l.289 ...hms is congruent with previous results.}}
 [6 <./experiment_1_batch_results.png>]
 
 [7 <./experiment_3_phase_transition.png>]
-<experiment_2_optimization_comparison.png, id=197, 609.7179pt x 395.7987pt>
+<experiment_2_optimization_comparison.png, id=192, 609.7179pt x 395.7987pt>
 File: experiment_2_optimization_comparison.png Graphic file (type png)
 <use experiment_2_optimization_comparison.png>
 Package pdftex.def Info: experiment_2_optimization_comparison.png  used on inpu
-t line 303.
+t line 302.
 (pdftex.def)             Requested size: 455.24411pt x 295.53171pt.
 
 
@@ -965,7 +970,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.614     # Komlós 
+l.613     # Komlós 
                     & Szemerédi theorem: p = (ln(n) + ln(ln(n))) / n
 ? 
 
@@ -975,7 +980,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.614     # Komlós 
+l.613     # Komlós 
                     & Szemerédi theorem: p = (ln(n) + ln(ln(n))) / n
 ? 
 
@@ -985,7 +990,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.614     # Komlós & Szemerédi 
+l.613     # Komlós & Szemerédi 
                                  theorem: p = (ln(n) + ln(ln(n))) / n
 ? 
 
@@ -995,7 +1000,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.614     # Komlós & Szemerédi 
+l.613     # Komlós & Szemerédi 
                                  theorem: p = (ln(n) + ln(ln(n))) / n
 ? 
 
@@ -1010,16 +1015,16 @@ LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: BAF7A646FC1EF63B35BCAB9AF99683A7;3101.
+(rerunfilecheck)             Checksum: 52FC29D799C8D538DDDF5C593EE93D78;2801.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23661 strings out of 473207
- 401152 string characters out of 5716282
- 1603559 words of memory out of 5000000
- 46152 multiletter control sequences out of 15000+600000
+ 23659 strings out of 473207
+ 401122 string characters out of 5716282
+ 1603533 words of memory out of 5000000
+ 46151 multiletter control sequences out of 15000+600000
  573596 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,9n,81p,1968b,2076s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1045,10 +1050,10 @@ xmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-
 dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on report.pdf (17 pages, 1292573 bytes).
+Output written on report.pdf (17 pages, 1292448 bytes).
 PDF statistics:
- 862 PDF objects out of 1000 (max. 8388607)
- 778 compressed objects within 8 object streams
- 496 named destinations out of 1000 (max. 500000)
- 143 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 857 PDF objects out of 1000 (max. 8388607)
+ 773 compressed objects within 8 object streams
+ 495 named destinations out of 1000 (max. 500000)
+ 135 words of extra memory for PDF output out of 10000 (max. 10000000)
 

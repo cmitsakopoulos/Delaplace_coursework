@@ -10,13 +10,13 @@
 \abx@aux@refcontext{nty/global//global/global/global}
 \catcode 95\active
 \babel@aux{english}{}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textit  {Visualised with Pyvis, depicts the correct Hamiltonian path through the artificially generated, 50 node graph.}}}{1}{figure.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textit  {Visualised with Pyvis, depicts the incomplete solution -- Hamiltonian path, which the GA found using the 2-OPT (inversion) operator in the Erdős-Rényi random graph. Broken edges are depicted in red.}}}{1}{figure.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1}Formal Definition and Introduction}{2}{section.1}\protected@file@percent }
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces \textit  {Usage scenario where the number of nodes for the problem graph are set to 50, with the probability of any two nodes having a connecting edge is 0.15. (This was ran in a Python environment -- ensure you install the dependencies listed in the annex.)}}}{2}{lstlisting.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Random Generation of the Problem: Erdős-Rényi Random Graph}{2}{section.2}\protected@file@percent }
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces \textit  {Small snippet of code in which NetworkX in Python can generate an ER graph of chosen parameters, identify that the default options are intended for a "challenging" benchmark for the algorithms. Hardcoding the seed was not a deliberate analytical choice, just to ensure reproducibility of the graph itself -- the algorithms are stochastic too...}}}{3}{lstlisting.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Test Environment: Experimental Choices and Reasoning}{3}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Metaheuristic Algorithms: Mode of Action and their Implementation}{3}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Metaheuristic Algorithms: Mode of Action and Code Snippets}{3}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Objective Function}{3}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Simulated Annealing (SA)}{4}{subsection.4.2}\protected@file@percent }
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces \textit  {Metropolis Criterion: As the loop progresses, the temperature $T$ decays geometrically ($T_{k+1} = 0.985 \cdot T_k$), gradually turning the search into a simple greedy descent (hill climbing)}}}{4}{lstlisting.3}\protected@file@percent }
@@ -24,8 +24,7 @@
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Tabu Search Memory Logic}}{4}{lstlisting.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Genetic Algorithm (GA)}{5}{subsection.4.4}\protected@file@percent }
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {5}{\ignorespaces Ordered Crossover (OX1) Implementation}}{5}{lstlisting.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Comparative Analysis: Neighbourhood Operators in GA}{5}{subsection.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Comparing the Metaheuristic Algorithms}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experiment: Comparing the Metaheuristic Algorithms}{5}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Batch Testing}{5}{subsection.5.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textit  {In the box & whisker plots depicted, "Solution Quality" (Y-axis: Broken Edges) is shown on the left and "Execution Time" (Y-axis: Time(seconds)) on the right. As discussed prior, due to the low probability of edges between any two nodes, the graph is sparse and the metaheuristic algorithms -- while performing differently from one another -- are not succesful in this testing case. As such, the amount of broken edges seen between algorithms is not unlikely, and the inverse relationship between the number of broken edges and execution time is a clear demonstration of algorithmic complexity -- which leads to positive outcomes in problem solving.} }}{6}{figure.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
