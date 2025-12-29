@@ -190,11 +190,11 @@ def run_genetic_algorithm(graph, pop_size=200, generations=1000, cross_rate=0.8,
         trace.append(best_broken)
         if current_broken == 0: break
             
-        next_pop = [best_sol] 
+        next_pop = [best_sol.copy()] 
         while len(next_pop) < pop_size:
             competitors = random.sample(population, 3)
             winner = max(competitors, key=lambda p: fitness_max(p, graph))
-            next_pop.append(winner)
+            next_pop.append(winner.copy())
         population = next_pop
 
         for i in range(1, pop_size - 1, 2):
@@ -397,19 +397,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Hamiltonian Path Metaheuristic Analysis")
     parser.add_argument("-N", "--nodes", type=int, default=50, help="Number of nodes in the graph (default: 50)")
     parser.add_argument("-p", "--prob", type=float, default=0.1, help="Edge creation probability (default: 0.1)")
+    parser.add_argument("--mode", type=str, default="all", choices=["all", "batch", "opt", "phase", "visual"], help="Experiment mode to run individually")
+
     
     args = parser.parse_args()
     
-    print(f"Running experiments with N={args.nodes} and p={args.prob}")
+    print(f"Running experiments with N={args.nodes} and p={args.prob}, Mode={args.mode}")
     
     # 1. Main Baseline (using 'Swap')
-    run_batch_experiments(args.nodes, args.prob)
+    if args.mode in ["all", "batch"]:
+        run_batch_experiments(args.nodes, args.prob)
     
     # 2. The Report Recommendation (Proving 2-Opt is better)
-    run_optimization_comparison(args.nodes)
+    if args.mode in ["all", "opt"]:
+        run_optimization_comparison(args.nodes)
     
     # 3. Physics/Difficulty Analysis (Runs ALL algorithms across densities)
-    run_phase_transition(args.nodes)
+    if args.mode in ["all", "phase"]:
+        run_phase_transition(args.nodes)
     
     # 4. Visual Output
-    save_best_graph_html(args.nodes, args.prob)
+    if args.mode in ["all", "visual"]:
+        save_best_graph_html(args.nodes, args.prob)
