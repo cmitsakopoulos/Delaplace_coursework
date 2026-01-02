@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.17)  29 DEC 2025 18:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.17)  2 JAN 2026 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report
+**report.tex
 (./report.tex
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-25>
@@ -876,13 +876,13 @@ l.125 \newpage
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 144.
+nput line 148.
 
 
 [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }]
 ! Misplaced alignment tab character &.
-l.169 ... all metaheuristics tested, the Komlós &
+l.173 ... all metaheuristics tested, the Komlós &
                                                    Szemerédi theorem/thresh...
 
 ? 
@@ -891,7 +891,7 @@ l.169 ... all metaheuristics tested, the Komlós &
 [3]
 
 [4]
-Overfull \hbox (12.93663pt too wide) in paragraph at lines 260--260
+Overfull \hbox (12.93663pt too wide) in paragraph at lines 264--264
 []\T1/cmr/bx/n/17.28 Experiment: Com-par-ing the Meta-heuris-tic Al-go-rithms 
  []
 
@@ -899,44 +899,44 @@ Overfull \hbox (12.93663pt too wide) in paragraph at lines 260--260
 
 [5]
 ! Misplaced alignment tab character &.
-l.272 ...or an ER graph with $n=50$, the Komlós &
+l.276 ...or an ER graph with $n=50$, the Komlós &
                                                    Szemerédi limit is $p=0....
 
 ? 
 <experiment_1_batch_results.png, id=171, 1001.6622pt x 423.2613pt>
 File: experiment_1_batch_results.png Graphic file (type png)
 <use experiment_1_batch_results.png>
-Package pdftex.def Info: experiment_1_batch_results.png  used on input line 276
+Package pdftex.def Info: experiment_1_batch_results.png  used on input line 280
 .
 (pdftex.def)             Requested size: 455.24411pt x 192.3646pt.
 ! Misplaced alignment tab character &.
 <argument> In the box &
                         whisker plots depicted, "Solution Quality" (Y-axis: ...
-l.277 ... positive outcomes in problem solving.} }
+l.281 ... positive outcomes in problem solving.} }
                                                   
 ? 
 ! Misplaced alignment tab character &.
 <argument> In the box &
                         whisker plots depicted, "Solution Quality" (Y-axis: ...
-l.277 ... positive outcomes in problem solving.} }
+l.281 ... positive outcomes in problem solving.} }
                                                   
 ? 
 <experiment_3_phase_transition.png, id=175, 615.4995pt x 396.0396pt>
 File: experiment_3_phase_transition.png Graphic file (type png)
 <use experiment_3_phase_transition.png>
 Package pdftex.def Info: experiment_3_phase_transition.png  used on input line 
-287.
+291.
 (pdftex.def)             Requested size: 455.24411pt x 292.9378pt.
 ! Misplaced alignment tab character &.
 <argument> ...t problem graph, given the Komlós &
                                                    Szemerédi formula. Obser...
-l.288 ...hms is congruent with previous results.}}
+l.292 ...hms is congruent with previous results.}}
                                                   
 ? 
 ! Misplaced alignment tab character &.
 <argument> ...t problem graph, given the Komlós &
                                                    Szemerédi formula. Obser...
-l.288 ...hms is congruent with previous results.}}
+l.292 ...hms is congruent with previous results.}}
                                                   
 ? 
 
@@ -948,7 +948,7 @@ l.288 ...hms is congruent with previous results.}}
 File: experiment_2_optimization_comparison.png Graphic file (type png)
 <use experiment_2_optimization_comparison.png>
 Package pdftex.def Info: experiment_2_optimization_comparison.png  used on inpu
-t line 302.
+t line 306.
 (pdftex.def)             Requested size: 455.24411pt x 295.53171pt.
 
 
@@ -970,7 +970,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.613     # Komlós 
+l.617     # Komlós 
                     & Szemerédi theorem: p = (ln(n) + ln(ln(n))) / n
 ? 
 
@@ -980,7 +980,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.613     # Komlós 
+l.617     # Komlós 
                     & Szemerédi theorem: p = (ln(n) + ln(ln(n))) / n
 ? 
 
@@ -990,7 +990,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.613     # Komlós & Szemerédi 
+l.617     # Komlós & Szemerédi 
                                  theorem: p = (ln(n) + ln(ln(n))) / n
 ? 
 
@@ -1000,7 +1000,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.613     # Komlós & Szemerédi 
+l.617     # Komlós & Szemerédi 
                                  theorem: p = (ln(n) + ln(ln(n))) / n
 ? 
 
@@ -1023,11 +1023,11 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 Here is how much of TeX's memory you used:
  23659 strings out of 473207
  401122 string characters out of 5716282
- 1603533 words of memory out of 5000000
+ 1599559 words of memory out of 5000000
  46151 multiletter control sequences out of 15000+600000
  573596 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,81p,1968b,2076s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,81p,1972b,2076s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></
@@ -1050,7 +1050,7 @@ xmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-
 dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on report.pdf (17 pages, 1292448 bytes).
+Output written on report.pdf (17 pages, 1292438 bytes).
 PDF statistics:
  857 PDF objects out of 1000 (max. 8388607)
  773 compressed objects within 8 object streams

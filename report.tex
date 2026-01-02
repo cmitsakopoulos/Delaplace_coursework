@@ -127,11 +127,15 @@
 % --- Introduction ---
 \section{Formal Definition and Introduction}
 
+This report evaluates three metaheuristic approaches: \textit{Simulated Annealing}, \textit{Tabu Search}, and a \textit{Genetic Algorithm}.
+
+\bigskip
+
 To start with, the Hamiltonian Path problem asks if a graph $G=(V, E)$ contains a path that visits every vertex / node $v \in V$ exactly once. 
 
 \bigskip
 
-Given that the Hamiltonian Path problem is NP-Complete, as the number of vertices of the vertex set $n = |V|$ increases, the computational complexity required to solve the problem via brute force grows factorially ($O(n!)$). Consequently, exact algorithms become computationally intractable for large $n$, necessitating the use of metaheuristics -- like the ones tested in this report. For this exact reason no evaluation of a brute force approach has been considered in the experiments of this report, as the computational and time complexity required is too high to practically implement. This report evaluates three metaheuristic approaches: \textit{Simulated Annealing}, \textit{Tabu Search}, and a \textit{Genetic Algorithm}.
+Given that the Hamiltonian Path problem is NP-Complete, as the number of vertices of the vertex set $n = |V|$ increases, the computational complexity required to solve the problem via brute force grows factorially ($O(n!)$). Consequently, exact algorithms become computationally intractable for large $n$, necessitating the use of metaheuristics -- like the ones tested in this report. For this exact reason no evaluation of a brute force approach has been considered in the experiments of this report, as the computational and time complexity required is too high to practically implement. 
 
 \bigskip
 
@@ -141,7 +145,7 @@ In the context of bioinformatics, specifically \textit{de novo} genome assembly,
 
 Find all relevant results / as well as reproduce the experiment using the \texttt{main.py} at the following address: \url{https://github.com/cmitsakopoulos/Delaplace_coursework}. The Python script automates all tests demonstrated in this report and moreover, accepts user arguments through the command line interface; intended for tweaking parameters regarding base graph generation.
 
-\begin{lstlisting}[language=Python, caption=\textit{Usage scenario where the number of nodes for the problem graph are set to 50, with the probability of any two nodes having a connecting edge is 0.15. (This was ran in a Python environment -- ensure you install the dependencies listed in the annex.)}]
+\begin{lstlisting}[language=Python, caption=\textit{Usage scenario where the number of nodes for the problem graph are set to 50, with the probability of any two nodes having a connecting edge is 0.15. (This was run in a Python environment -- ensure you install the dependencies listed in the annex.)}]
 (project) chrismitsacopoulos@192 Delaplace_coursework % python3 main.py --nodes 50 --prob 0.15
 \end{lstlisting}
 
@@ -153,7 +157,7 @@ To benchmark the metaheuristic algorithms, an Erdős-Rényi (ER) $G(n,p)$ model 
     \item $p$: The probability that an edge exists between any two distinct vertices.
 \end{itemize}
 
-A larger parameter $p$ will by effect increase the likelihood of finding a Hamiltonian Path, given that the probability of any two nodes having a connecting edge is larger. This was evident when first trying out the \texttt{main.py} Python script, where preliminary tests with a  $p$ of $\approx0.3$ and $n=50$ showed that a Hamiltonian Path was indeed mathematically possible to find; so much so that all algorithms would converge to a zero cost solution (no broken edges).
+A larger parameter $p$ will by effect increase the likelihood of finding a Hamiltonian Path, given that the probability of any two nodes having a connecting edge is larger. This was evident when first trying out the \texttt{main.py} Python script, where preliminary tests with a  $p$ of $\approx0.3$ and $n=50$ showed that a Hamiltonian Path was indeed mathematically possible to find. It was so much so that all algorithms would converge to a zero cost solution (no broken edges).
 
 \begin{lstlisting}[language=Python, caption=\textit{Small snippet of code in which NetworkX in Python can generate an ER graph of chosen parameters, identify that the default options are intended for a "challenging" benchmark for the algorithms. Hardcoding the seed was not a deliberate analytical choice, just to ensure reproducibility of the graph itself -- the algorithms are stochastic too...}]
 # n default = 50, p default = 0.1, seed hardcoded to 42
@@ -173,16 +177,16 @@ Additionally, in order to observe the impact on phase transition across all meta
 \end{equation}
 
 
-While $p < p_{\text{limit}}$, the probability of a Hamiltonian path existing approaches zero; thus any algorithm claiming a valid solution is likely "hallucinating'', being overconfident (due to verification errors), or has encountered a statistical anomaly (highly unlikely in my testing case). Conversely, for $p > p_{\text{limit}}$, a path almost surely exists; consequently, if an algorithm fails to converge to a zero-cost solution in this region (zero broken edges), it shows that the algorithm is underperforming rather than the problem being impossible.
+While $p < p_{\text{limit}}$, the probability of a Hamiltonian path existing approaches zero; thus any algorithm claiming a valid solution is likely "hallucinating'', being overconfident (due to verification errors), or has encountered a statistical anomaly (highly unlikely in my testing case). Conversely, for $p > p_{\text{limit}}$, a path almost surely exists: consequently, if an algorithm fails to converge to a zero-cost solution in this region (zero broken edges), it shows that the algorithm is underperforming rather than the problem being impossible.
 
 \bigskip
 
-Another important consideration, was to examine the impact of switching from a \text{"Swap"} operator to an \textbf{"Inversion" (2-OPT) operator} between testing cases. This was not only tested in the case of GA, to demonstrate how it can be a positive addition on an already accurate algorithm. However, it was also tested in the case of SA and GA to show that the impact of this change is not algorithm-specific; this should become evident when looking at the \textbf{"Phase Transition"} experiment of this report, where the 2-OPT operator was used instead of the Swap operator.
+Another important consideration, was to examine the impact of switching from a \text{"Swap"} operator to an \textbf{"Inversion" (2-OPT) operator} between testing cases. This was also tested with the GA to demonstrate how 2-OPT can be a positive addition to an already accurate algorithm. Additionally, it was tested with SA and TS to demonstrate that the impact of this change is not algorithm-specific. This phenomenon should become evident when looking at the \textbf{"Phase Transition"} experiment of this report, where the 2-OPT operator was used instead of the Swap operator.
 
 \section{Metaheuristic Algorithms: Mode of Action and Code Snippets}
 
 \subsection{Objective Function}
-All algorithms used aim to identify a permutation $S$ of vertices that minimises the number of broken edges in the path. For a graph $G=(V,E)$ and a candidate path $S = [v_1, v_2, \dots, v_n]$, the cost function $C(S)$ is defined as:
+The aim of these algorithms is to identify a permutation $S$ of vertices that minimises the number of broken edges in the path. For a graph $G=(V,E)$ and a candidate path $S = [v_1, v_2, \dots, v_n]$, the cost function $C(S)$ is defined as:
 
 \begin{equation}
     C(S) = (n-1) - \sum_{i=1}^{n-1} \mathbb{I}((v_i, v_{i+1}) \in E)
@@ -191,7 +195,7 @@ Where $\mathbb{I}$ is an indicator function that equals 1 if the edge exists and
 
 \subsection{Simulated Annealing (SA)}
 
-Simulated Annealing explores solutions by accepting both better or even, worse solutions, based on a probability that decreases over time (referred to as parameter $T$). This logic prevents the algorithm from arriving at a final solution, before it has found the true solution inside the solution space. The probability $P$ -- of accepting --  a new solution $S'$ with cost difference $\Delta C = C(S') - C(S)$ is governed by the Metropolis criterion (see also the Python implementation below):
+Simulated Annealing explores solutions by accepting both better or even worse solutions, based on a probability that decreases over time (referred to as parameter $T$). This logic prevents the algorithm from arriving at a final solution before reaching a truly optimal or near optimal solution. The probability $P$ of accepting a new solution $S'$ with cost difference $\Delta C = C(S') - C(S)$, is governed by the Metropolis criterion (see also the Python implementation below):
 
 \begin{equation}
     P(\text{accept}) = 
@@ -212,7 +216,7 @@ if delta < 0 or random.random() < exp(-delta / temp):
 \end{lstlisting}
 
 \subsection{Tabu Search (TS)}
-Tabu Search differs from SA by using a deterministic, memory-based approach. TS explores an immediate neighbourhood of a current solution it has found and moves to the best available neighbour (=solution), even if that neighbour is worse than the current solution.
+Tabu Search differs from SA by using a deterministic, memory-based approach. TS explores the immediate neighbourhood of a current solution, then moves to the best available neighbouring solution, even if that neighbouring solution is worse than the current solution.
 
 \bigskip
 To prevent cycling (revisiting the same solutions again and again), the algorithm maintains a \textit{Tabu List} -- a short-term memory that prevents recent solutions for a specific duration, called tenure.
@@ -265,7 +269,7 @@ The experiment code in \texttt{main.py} has been hardcoded to repeat the stochas
 
 \bigskip
 
-Briefly, with reference to \autoref{fig:batch_results}, the lowest solution quality (highest number of broken edges) is demonstrated by SA, then TS and with the GA, being the best performer. Inversely, the highest execution time per batch run, was demonstrated by GA, followed by TS and lastly SA. These results confirm the expected correlation between computational cost and solution quality (indicating the code works as intended). SA is the fastest because it performs a single $O(1)$ evaluation per step, but its single-trajectory stochasticity struggles to escape bad solutions (local optima) in a solution landscape. TS improves solving quality by improving local search, by evaluating a neighbourhood of size $k=50$ per step ($O(k)$), which linearly increases runtime. Lastly, the GA achieves a near-optimal solution at the highest computational cost; it maintains diversity through a population-based search ($O(P \cdot N)$ per generation), allowing it to traverse the complex fitness landscape more effectively than the trajectory-based methods. 
+Briefly, with reference to \autoref{fig:batch_results}, the lowest solution quality (highest number of broken edges) is demonstrated by SA, then TS and with the GA, being the best performer. Inversely, the highest execution time per batch run, was demonstrated by GA, followed by TS and lastly SA. These results confirm the expected correlation between computational cost and solution quality (indicating the code works as intended). SA is the fastest because it performs a single $O(1)$ evaluation per step, but its single-trajectory stochasticity struggles to escape bad solutions (local optima) in a solution landscape. TS evaluates a neighbourhood of size $k=50$ per step ($O(k)$) (focus on local searches), which linearly increases runtime. Lastly, the GA achieves a near-optimal solution albeit, at the highest computational cost. It maintains diversity through a population-based search ($O(P \cdot N)$ per generation), allowing it to traverse the complex fitness landscape more effectively than the trajectory-based methods. 
 
 \bigskip
 
@@ -295,7 +299,7 @@ Congruent with the phase transition results, it is evident that the switch from 
 
 \bigskip
 
-Firstly, the \texttt{2-OPT} (or inversion) operator is less destructive at each iteration. It reverses a segment between indices $i$ and $j$ at each iteration, removing two edges $(v_i, v_{i+1})$ and $(v_j, v_{j+1})$, and replacing them with $(v_i, v_j)$ and $(v_{i+1}, v_{j+1})$, whilst preserving the adjacency of all nodes within the segment. As such, the 2-OPT operator enables the algorithm to make small changes which are beneficial at each iteration. Therefore, as can be seen in \autoref{fig:optimisation_comparison_GA}, the GA with the 2-OPT operator improves its global solution at each iteration, whereas the Swap operator will repeatedly plateau/stagnate due to destructive solutions between iterations. Secondly, as mentioned before, the \texttt{Swap} operator exchanges two nodes $v_i$ and $v_j$ arbitrarily, which can affect up to four edges: $(v_{i-1}, v_i), (v_i, v_{i+1}), (v_{j-1}, v_j),$ and $(v_j, v_{j+1})$. Instead of making minor improvements locally, the Swap operator will lead to the algorithm making more destructive changes at each iteration; causing the search to stagnate (maintain one solution over multiple iterations) until a more rare, but more beneficial solution is accidentally found by the destructive search.
+Firstly, the \texttt{2-OPT} (or inversion) operator is less destructive at each iteration. It reverses a segment between indices $i$ and $j$ at each iteration, removing two edges $(v_i, v_{i+1})$ and $(v_j, v_{j+1})$, and replacing them with $(v_i, v_j)$ and $(v_{i+1}, v_{j+1})$, whilst preserving the adjacency of all nodes within the segment. As such, the 2-OPT operator enables the algorithm to make small changes which are beneficial at each iteration. Therefore, as can be seen in \autoref{fig:optimisation_comparison_GA}, the GA with the 2-OPT operator improves its global solution at each iteration, whereas the Swap operator will repeatedly plateau/stagnate due to destructive solutions between iterations. Secondly, as mentioned before, the \texttt{Swap} operator exchanges two nodes $v_i$ and $v_j$ arbitrarily, which can affect up to four edges: $(v_{i-1}, v_i), (v_i, v_{i+1}), (v_{j-1}, v_j),$ and $(v_j, v_{j+1})$. Instead of making minor improvements locally, the Swap operator will lead the algorithm to more destructive changes at each iteration. In turn, this will cause the search to stagnate (maintain one solution over multiple iterations) over a certain amount of iterations. While a more beneficial solution can be found accidentaly, the algorithm risks gettingn stuck in local minima; minima which can be avoided by the 2-OPT operator.
 
 \begin{figure}[H]
     \centering
