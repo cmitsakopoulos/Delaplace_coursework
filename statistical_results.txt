@@ -1,0 +1,23 @@
+
+============================================================
+Statistical Analysis Run
+============================================================
+
+--- STATISTICAL ANALYSIS (α=0.05) ---
+Kruskal-Wallis H-test: H=64.5056, p=9.8352e-15
+  → Significant difference between groups
+
+Pairwise Wilcoxon signed-rank tests:
+  SA vs Tabu: W=0.00, p=2.5577e-06 *
+  SA vs GA: W=0.00, p=2.5126e-06 *
+  Tabu vs GA: W=12.00, p=7.0546e-01 
+
+Effect sizes (Cohen's d):
+  SA vs Tabu: d=2.619 (large)
+  SA vs GA: d=2.523 (large)
+  Tabu vs GA: d=-0.102 (negligible)
+
+95% Confidence Intervals:
+  SA: 1.73 [1.42, 2.04]
+  Tabu: 0.10 [-0.01, 0.21]
+  GA: 0.13 [0.00, 0.26]

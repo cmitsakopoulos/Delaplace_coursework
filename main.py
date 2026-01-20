@@ -646,87 +646,6 @@ def save_best_graph_html(num_nodes, prob):
     net.show("hamiltonian_path.html", notebook=False)
     print("Saved to 'hamiltonian_path.html'")
 
-def run_scalability_analysis(node_sizes=[30, 50, 75, 100], prob=0.15, runs=10):
-    """
-    Analyze how algorithm performance scales with problem size.
-    
-    Measures:
-    - Success rate vs N
-    - Mean execution time vs N
-    
-    Generates: experiment_4_scalability.png
-    """
-    print(f"\n--- 5. SCALABILITY ANALYSIS (prob={prob}, {runs} runs per N) ---")
-    
-    results = {'N': [], 'Success Rate': [], 'Time (s)': [], 'Algorithm': []}
-    
-    algorithms = {
-        'SA': lambda g: run_simulated_annealing(g, max_steps=3000, operator="inversion"),
-        'Tabu': lambda g: run_tabu_search(g, max_steps=1500, operator="inversion"),
-        'GA': lambda g: run_genetic_algorithm(g, generations=1500, operator="inversion")
-    }
-    
-    for n in node_sizes:
-        print(f"Testing N={n}...")
-        # Create graph with probability high enough to likely have a solution
-        g = nx.erdos_renyi_graph(n=n, p=prob, seed=SEED)
-        
-        for name, algo_func in algorithms.items():
-            successes = 0
-            times = []
-            for _ in range(runs):
-                start = time.time()
-                _, cost, _ = algo_func(g)
-                dur = time.time() - start
-                times.append(dur)
-                if cost == 0:
-                    successes += 1
-            
-            rate = (successes / runs) * 100
-            mean_time = np.mean(times)
-            results['N'].append(n)
-            results['Success Rate'].append(rate)
-            results['Time (s)'].append(mean_time)
-            results['Algorithm'].append(name)
-            print(f"  {name}: Success={rate:.0f}%, Time={mean_time:.3f}s")
-    
-    df = pd.DataFrame(results)
-    
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-    
-    sns.lineplot(data=df, x='N', y='Success Rate', hue='Algorithm', marker='o', ax=axes[0], linewidth=2)
-    axes[0].set_title('Success Rate vs Problem Size')
-    axes[0].set_ylabel('Success Rate (%)')
-    axes[0].set_xlabel('Number of Nodes (N)')
-    axes[0].set_ylim(-5, 105)
-    axes[0].grid(True)
-    
-    sns.lineplot(data=df, x='N', y='Time (s)', hue='Algorithm', marker='o', ax=axes[1], linewidth=2)
-    axes[1].set_title('Execution Time vs Problem Size')
-    axes[1].set_ylabel('Mean Time (s)')
-    axes[1].set_xlabel('Number of Nodes (N)')
-    axes[1].grid(True)
-    
-    plt.tight_layout()
-    plt.savefig('experiment_4_scalability.png', dpi=300, bbox_inches='tight')
-    print("Saved 'experiment_4_scalability.png'")
-    
-    # Save results to CSV and text file
-    df.to_csv('experiment_4_scalability_results.csv', index=False)
-    print("Saved 'experiment_4_scalability_results.csv'")
-    
-    with open('statistical_results.txt', 'a') as f:
-        f.write(f"\n{'='*60}\n")
-        f.write(f"Scalability Analysis (prob={prob}, {runs} runs per N)\n")
-        f.write(f"{'='*60}\n")
-        for n in node_sizes:
-            f.write(f"\nN={n}:\n")
-            for algo in ['SA', 'Tabu', 'GA']:
-                row = df[(df['N'] == n) & (df['Algorithm'] == algo)]
-                if not row.empty:
-                    f.write(f"  {algo}: Success={row['Success Rate'].values[0]:.0f}%, Time={row['Time (s)'].values[0]:.3f}s\n")
-    print("Results appended to 'statistical_results.txt'")
-
 def run_adaptive_comparison(num_nodes, prob=0.1, runs=20):
     """
     Compare standard GA vs adaptive mutation GA.
@@ -806,7 +725,7 @@ if __name__ == "__main__":
     parser.add_argument("-N", "--nodes", type=int, default=50, help="Number of nodes in the graph (default: 50)")
     parser.add_argument("-p", "--prob", type=float, default=0.1, help="Edge creation probability (default: 0.1)")
     parser.add_argument("--mode", type=str, default="all", 
-                        choices=["all", "batch", "opt", "phase", "visual", "stats", "scale", "adaptive"],
+                        choices=["all", "batch", "opt", "phase", "visual", "stats", "adaptive"],
                         help="Experiment mode to run individually")
 
     
@@ -853,10 +772,6 @@ if __name__ == "__main__":
                                     output_prefix=f"stats_N{args.nodes}_p{args.prob}",
                                     title=f"Algorithm Comparison (N={args.nodes}, p={args.prob})")
     
-    # 6. Scalability Analysis
-    if args.mode == "scale":
-        run_scalability_analysis(node_sizes=[30, 50, 75, 100], prob=0.15)
-    
-    # 7. Adaptive Mutation Comparison
+    # 6. Adaptive Mutation Comparison
     if args.mode == "adaptive":
         run_adaptive_comparison(args.nodes, prob=args.prob)

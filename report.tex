@@ -1,5 +1,5 @@
 \documentclass[12pt, a4paper]{article} % Assuming 'article' class, adjust if needed
-
+\nonstopmode
 % --- Preamble (Include necessary packages) ---
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -87,7 +87,7 @@
     \begin{minipage}[t]{1\textwidth}
         \centering
         \includegraphics[width=12cm]{title_page.png}
-        \captionof{figure}{\textit{Visualised with Pyvis, depicts the incomplete solution -- Hamiltonian path, which the GA found using the 2-OPT (inversion) operator in the Erdős-Rényi random graph. Broken edges are depicted in red.}}
+        \captionof{figure}{\textit{Visualised with Pyvis, depicts the best Hamiltonian path that could be solved for. The GA found using the 2-OPT (inversion) operator in the Erdős-Rényi random graph. Broken edges are depicted in red.}}
     \end{minipage}
     \vspace{0.3cm}
 
@@ -143,11 +143,18 @@ In the context of bioinformatics, specifically \textit{de novo} genome assembly,
 
 \bigskip
 
-Find all relevant results / as well as reproduce the experiment using the \texttt{main.py} at the following address: \url{https://github.com/cmitsakopoulos/Delaplace_coursework}. The Python script automates all tests demonstrated in this report and moreover, accepts user arguments through the command line interface; intended for tweaking parameters regarding base graph generation.
+Find all relevant results / as well as reproduce the experiment using the \texttt{main.py} at the following address: \url{https://github.com/cmitsakopoulos/Delaplace_coursework}. The Python script automates all tests demonstrated in this report and moreover, accepts user arguments through the command line interface; intended for tweaking parameters regarding base graph generation. The \texttt{--mode} argument allows running specific experiments:
 
-\begin{lstlisting}[language=Python, caption=\textit{Usage scenario where the number of nodes for the problem graph are set to 50, with the probability of any two nodes having a connecting edge is 0.15. (This was run in a Python environment -- ensure you install the dependencies listed in the annex.)}]
-(project) chrismitsacopoulos@192 Delaplace_coursework % python3 main.py --nodes 50 --prob 0.15
+\begin{lstlisting}[language=Python, caption=\textit{Available experiment modes. The default mode "all" runs batch, optimisation, phase transition, and visualisation experiments.}]
+# Default: runs all standard experiments
+python main.py --nodes 50 --prob 0.15
+
+# Specific modes:
+python main.py --mode batch    # Batch testing only
+python main.py --mode stats    # Statistical tests (Kruskal-Wallis, Wilcoxon)
+python main.py --mode adaptive # Compare standard vs adaptive mutation GA
 \end{lstlisting}
+
 
 \section{Random Generation of the Problem: Erdős-Rényi Random Graph}
 
@@ -182,6 +189,10 @@ While $p < p_{\text{limit}}$, the probability of a Hamiltonian path existing app
 \bigskip
 
 Another important consideration, was to examine the impact of switching from a \text{"Swap"} operator to an \textbf{"Inversion" (2-OPT) operator} between testing cases. This was also tested with the GA to demonstrate how 2-OPT can be a positive addition to an already accurate algorithm. Additionally, it was tested with SA and TS to demonstrate that the impact of this change is not algorithm-specific. This phenomenon should become evident when looking at the \textbf{"Phase Transition"} experiment of this report, where the 2-OPT operator was used instead of the Swap operator.
+
+\bigskip
+
+To move beyond visual comparisons and quantify whether observed performance differences are statistically meaningful, non-parametric statistical tests were employed. The Kruskal-Wallis H-test determines whether at least one algorithm performs significantly differently from the others, while pairwise Wilcoxon signed-rank tests identify which specific pairs differ. These non-parametric tests are appropriate because solution quality scores do not follow a normal distribution---algorithms either find optimal solutions (cost = 0) or get stuck at various local optima. Additionally, Cohen's $d$ effect size quantifies the practical magnitude of differences, distinguishing between statistically significant results and practically meaningful ones. An effect size $|d| \geq 0.8$ indicates a large, practically important difference between algorithms.
 
 \section{Metaheuristic Algorithms: Mode of Action and Code Snippets}
 
@@ -261,6 +272,27 @@ Using the standard \texttt{swap} operator (exchanging two indices) disrupts the 
     \text{Inversion}(S) \rightarrow \text{Minimal disruption (2-Opt)}
 \end{equation}
 
+\subsubsection{Adaptive Mutation Rate}
+
+Another improvement over that of the mutation operator (Swap vs 2-Opt), which determines how to mutate a solution in order to develop it, is improving on how often to mutate. With a high fixed mutation rate, the algorithm promotes exploration but disrupts good solutions, while low mutation rates enable exploitation but risk converging early; thereby leading to suboptimal solutions. An adaptive approach addresses this by adjusting the mutation probability $\mu$ based on population diversity $D$:
+
+\begin{equation}
+    D = \frac{|\mathcal{F}_{\text{unique}}|}{P}, \quad \mu_{\text{adaptive}} = \mu_{\text{base}} \cdot (1 + (0.5 - D))
+\end{equation}
+
+When $D < 0.5$ (population becoming homogeneous), mutation increases to reintroduce variation. When $D > 0.5$ (healthy diversity), mutation decreases to exploit promising solutions. The rate is clamped to $[0.1, 0.6]$. This self-regulating mechanism helps prevent premature convergence without manual tuning.
+
+\begin{lstlisting}[language=Python, caption=\textit{Adaptive mutation rate logic from main.py. Diversity is computed per generation, and mutation rate is adjusted accordingly.}]
+def calculate_diversity(fitnesses):
+    return len(set(fitnesses)) / len(fitnesses)
+
+# Inside GA loop, per generation:
+if adaptive:
+    diversity = calculate_diversity(fitnesses)
+    current_mut = base_mut_rate * (1 + (0.5 - diversity))
+    current_mut = max(0.1, min(0.6, current_mut))
+\end{lstlisting}
+
 \section{Experiment: Comparing the Metaheuristic Algorithms}
 
 \subsection{Batch Testing}
@@ -306,6 +338,36 @@ Firstly, the \texttt{2-OPT} (or inversion) operator is less destructive at each 
     \includegraphics[width=\textwidth]{experiment_2_optimization_comparison.png}
     \caption{\textit{In the depicted line chart, Broken Edges (Y-axis) for which the objective function seeks to minimise (Cost) by maximising the number of edges in the path, is plotted against the number of generations -- repeated runs (X-axis). The GA with the Swap operator is shown in blue, while the GA with the Inversion (2-Opt) operator is in orange. Observe the clear disparity between the two operators, in which it's clear that the 2-OPT operator GA converges much faster to a near-global optimum (zero broken edges) than its Swap-GA counterpart.}}
     \label{fig:optimisation_comparison_GA}
+\end{figure}
+
+\subsection{Statistical Validation}
+
+To quantify the statistical significance of the performance differences observed in the figures above, the Kruskal-Wallis H-test was applied:
+
+\begin{equation}
+    H = \frac{12}{N(N+1)} \sum_{i=1}^{k} \frac{R_i^2}{n_i} - 3(N+1)
+\end{equation}
+
+A significant result ($p < 0.05$) confirms that the algorithms perform differently. Pairwise Wilcoxon signed-rank tests further identify which specific pairs differ:
+
+\begin{equation}
+    W = \min\left(\sum_{d_i > 0} R_i, \sum_{d_i < 0} R_i\right)
+\end{equation}
+
+Finally, Cohen's $d$ effect size quantifies the magnitude of these differences:
+
+\begin{equation}
+    d = \frac{\bar{x}_1 - \bar{x}_2}{s_{\text{pooled}}} \quad \text{where} \quad s_{\text{pooled}} = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}
+\end{equation}
+
+The statistical analysis is visualised through a three-panel figure containing: a box plot with Mann-Whitney significance annotations (star notation: $^*p<0.05$, $^{**}p<0.01$, $^{***}p<0.001$), mean broken edges with 95\% confidence interval error bars, and an effect size heatmap showing pairwise Cohen's $d$ values.
+
+Uncomment when figure is generated:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{stats_N50_p0.15_plot.png}
+    \caption{\textit{Statistical comparison of SA, Tabu Search, and GA. Left: Box plot with Mann-Whitney significance annotations. Centre: Mean broken edges with 95\% CI error bars. Right: Cohen's d effect size heatmap showing pairwise comparisons.}}
+    \label{fig:stats_comparison}
 \end{figure}
 
 \section{Annex}
