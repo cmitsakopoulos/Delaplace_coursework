@@ -87,7 +87,7 @@
     \begin{minipage}[t]{1\textwidth}
         \centering
         \includegraphics[width=12cm]{title_page.png}
-        \captionof{figure}{\textit{Visualised with Pyvis, depicts the best Hamiltonian path that could be solved for. The GA found using the 2-OPT (inversion) operator in the Erdős-Rényi random graph. Broken edges are depicted in red.}}
+        \captionof{figure}{\textit{Visualised with Pyvis (Python), depicts the Hamiltonian path solved by the GA using the 2-OPT (inversion) operator \& adaptive mutation, in the Erdős-Rényi random graph.}}
     \end{minipage}
     \vspace{0.3cm}
 
@@ -377,6 +377,10 @@ I visualise this statistical analysis through a three-panel figure containing:
 \end{figure}
 
 With reference to \autoref{fig:stats_comparison}, SA exhibits a mean of $\bar{x}_{SA} = 1.73$ broken edges (95\% CI: between 1.42 and 2.04), while Tabu Search ($\bar{x}_{Tabu} = 0.10$, CI: between -0.01 and 0.21) and GA ($\bar{x}_{GA} = 0.13$, CI: between 0.00 and 0.26) achieve near-optimal solutions. Importantly, but expectedly so, the Mann-Whitney tests confirm highly significant differences between SA and both other algorithms ($p < 0.0001$), whereas Tabu vs GA is non-significant. Equally, the effect size heatmap shows large differences between all: $d_{SA \leftrightarrow Tabu} = 2.62$ and $d_{SA \leftrightarrow GA} = 2.52$ (both $|d| > 0.8$), while $d_{Tabu \leftrightarrow GA} = -0.10$ indicates negligible difference. These results statistically confirm that the memory-based (Tabu) and population-based (GA) strategies substantially outperform the single-trajectory stochastic approach (SA) on this graph configuration. However, this strong distinction diminishes at higher graph densities ($p \geq 0.15$), where all algorithms achieve 100\% success as shown in the phase transition analysis.
+
+\section{Conclusion}
+
+In this report I compare three metaheuristic approaches for the Hamiltonian Path problem on specific Erdős-Rényi random graph. Out of the three, the Genetic Algorithm and Tabu Search consistently outperformed Simulated Annealing, with statistically significant differences (Cohen's $d > 2.5$) at moderate graph densities. The addition of a 2-OPT (inversion) operator, proved better than the standard swap operator, thus leading to faster and smoother convergence. Expectedly, the phase transition analysis confirmed that all algorithms achieve 100\% success above the Komlós \& Szemerédi threshold ($p > p_{\text{limit}}$), though GA and Tabu demonstrated surprising success even slightly below this theoretical limit; with GA excelling the most. For most applications, the GA with 2-OPT and adaptive mutation represents the best choice, albeit at higher computational cost.
 
 \section{Annex}
 

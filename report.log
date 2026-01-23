@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.14)  23 JAN 2026 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2026.1.14)  23 JAN 2026 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -822,7 +822,7 @@ Package biblatex Info: ... file 'report.bbl' found.
 Package biblatex Info: Reference section=0 on input line 65.
 Package biblatex Info: Reference segment=0 on input line 65.
 \c@lstlisting=\count466
-<logo_blue.png, id=64, 1993.94937pt x 1004.25188pt>
+<logo_blue.png, id=68, 1993.94937pt x 1004.25188pt>
 File: logo_blue.png Graphic file (type png)
 <use logo_blue.png>
 Package pdftex.def Info: logo_blue.png  used on input line 74.
@@ -832,7 +832,7 @@ Overfull \hbox (95.7065pt too wide) in paragraph at lines 74--75
  [][] 
  []
 
-<logo_purple.png, id=66, 3011.25pt x 1060.96375pt>
+<logo_purple.png, id=70, 3011.25pt x 1060.96375pt>
 File: logo_purple.png Graphic file (type png)
 <use logo_purple.png>
 Package pdftex.def Info: logo_purple.png  used on input line 79.
@@ -842,7 +842,7 @@ Overfull \hbox (7.30768pt too wide) in paragraph at lines 79--80
  [][] 
  []
 
-<title_page.png, id=67, 476.53032pt x 431.36156pt>
+<title_page.png, id=71, 476.53032pt x 431.36156pt>
 File: title_page.png Graphic file (type png)
 <use title_page.png>
 Package pdftex.def Info: title_page.png  used on input line 89.
@@ -908,7 +908,7 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-<experiment_1_batch_results.png, id=202, 1001.6622pt x 423.2613pt>
+<experiment_1_batch_results.png, id=207, 1001.6622pt x 423.2613pt>
 File: experiment_1_batch_results.png Graphic file (type png)
 <use experiment_1_batch_results.png>
 Package pdftex.def Info: experiment_1_batch_results.png  used on input line 314
@@ -938,7 +938,7 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-<experiment_3_phase_transition.png, id=206, 618.3903pt x 397.2441pt>
+<experiment_3_phase_transition.png, id=211, 618.3903pt x 397.2441pt>
 File: experiment_3_phase_transition.png Graphic file (type png)
 <use experiment_3_phase_transition.png>
 Package pdftex.def Info: experiment_3_phase_transition.png  used on input line 
@@ -970,19 +970,19 @@ might try typing `S' now just to see what is salvageable.
 
 [7 <./experiment_1_batch_results.png>] [8 <./experiment_3_phase_transition.png>
 ]
-<experiment_2_optimization_comparison.png, id=222, 611.6451pt x 397.2441pt>
+<experiment_2_optimization_comparison.png, id=227, 611.6451pt x 397.2441pt>
 File: experiment_2_optimization_comparison.png Graphic file (type png)
 <use experiment_2_optimization_comparison.png>
 Package pdftex.def Info: experiment_2_optimization_comparison.png  used on inpu
 t line 340.
 (pdftex.def)             Requested size: 455.24411pt x 295.67142pt.
  [9 <./experiment_2_optimization_comparison.png>]
-<stats_N50_p0.15_plot.png, id=230, 1138.0116pt x 351.4731pt>
+<stats_N50_p0.15_plot.png, id=235, 1138.0116pt x 351.4731pt>
 File: stats_N50_p0.15_plot.png Graphic file (type png)
 <use stats_N50_p0.15_plot.png>
 Package pdftex.def Info: stats_N50_p0.15_plot.png  used on input line 374.
 (pdftex.def)             Requested size: 455.24411pt x 140.59747pt.
- [10 <./stats_N50_p0.15_plot.png>] [11]
+ [10 <./stats_N50_p0.15_plot.png>] [11] [12]
 
 ! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@).
 
@@ -990,7 +990,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.500 ....append(f"\n--- STATISTICAL ANALYSIS (α=
+l.504 ....append(f"\n--- STATISTICAL ANALYSIS (α=
                                                   {alpha}) ---")
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -1005,7 +1005,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.500 ....append(f"\n--- STATISTICAL ANALYSIS (α=
+l.504 ....append(f"\n--- STATISTICAL ANALYSIS (α=
                                                   {alpha}) ---")
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -1013,7 +1013,6 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-[12]
 
 ! LaTeX Error: Invalid UTF-8 byte sequence (�\lst@FillFixed@\lst@EC�).
 
@@ -1021,7 +1020,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.502         lines.append(f"  → 
+l.506         lines.append(f"  → 
                                    {'Significant' if p_value < alpha else 'N...
 
 The document does not appear to be in UTF-8 encoding.
@@ -1037,7 +1036,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.502         lines.append(f"  → 
+l.506         lines.append(f"  → 
                                    {'Significant' if p_value < alpha else 'N...
 
 The document does not appear to be in UTF-8 encoding.
@@ -1054,7 +1053,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.619     ax2.set_title('Mean ± 
+l.623     ax2.set_title('Mean ± 
                                  95% Confidence Interval')
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -1069,7 +1068,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.619     ax2.set_title('Mean ± 
+l.623     ax2.set_title('Mean ± 
                                  95% Confidence Interval')
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -1085,7 +1084,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.944     # Komlós 
+l.948     # Komlós 
                     & Szemerédi theorem: p = (ln(n) + ln(ln(n))) / n
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -1100,7 +1099,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.944     # Komlós 
+l.948     # Komlós 
                     & Szemerédi theorem: p = (ln(n) + ln(ln(n))) / n
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -1115,7 +1114,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.944     # Komlós & Szemerédi 
+l.948     # Komlós & Szemerédi 
                                  theorem: p = (ln(n) + ln(ln(n))) / n
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -1130,7 +1129,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.944     # Komlós & Szemerédi 
+l.948     # Komlós & Szemerédi 
                                  theorem: p = (ln(n) + ln(ln(n))) / n
 The document does not appear to be in UTF-8 encoding.
 Try adding \UseRawInputEncoding as the first line of the file
@@ -1138,25 +1137,25 @@ or specify an encoding such as \usepackage [latin1]{inputenc}
 in the document preamble.
 Alternatively, save the file in UTF-8 using your editor or another tool
 
-[21] [22] [23] [24] [25] (./report.aux)
+[21] [22] [23] [24] [25] [26] (./report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-29>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 112687B4F16DE9DAA78D53E2CC100478;3142.
+(rerunfilecheck)             Checksum: 7DCFEB96C88412857FCF9847CCC33993;3236.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 24177 strings out of 467538
- 406130 string characters out of 5423725
- 1668748 words of memory out of 5000000
- 51946 multiletter control sequences out of 15000+600000
+ 24180 strings out of 467538
+ 406157 string characters out of 5423725
+ 1658748 words of memory out of 5000000
+ 51947 multiletter control sequences out of 15000+600000
  642480 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,79p,1968b,2143s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,79p,1968b,2094s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
 live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2025/texmf-dis
@@ -1177,10 +1176,10 @@ per/sfrm0600.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm08
 dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2025/texmf-dist/fonts
 /type1/public/cm-super/sftt1000.pfb><c:/texlive/2025/texmf-dist/fonts/type1/pub
 lic/cm-super/sftt1200.pfb>
-Output written on report.pdf (26 pages, 1335999 bytes).
+Output written on report.pdf (27 pages, 1338394 bytes).
 PDF statistics:
- 1366 PDF objects out of 1440 (max. 8388607)
- 1266 compressed objects within 13 object streams
- 882 named destinations out of 1000 (max. 500000)
- 156 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1376 PDF objects out of 1440 (max. 8388607)
+ 1275 compressed objects within 13 object streams
+ 884 named destinations out of 1000 (max. 500000)
+ 164 words of extra memory for PDF output out of 10000 (max. 10000000)
 
